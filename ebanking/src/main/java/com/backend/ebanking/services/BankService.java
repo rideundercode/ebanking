@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public abstract class BankService {
@@ -36,5 +38,8 @@ public abstract class BankService {
         }
     }
 
-    abstract Customer SaveCustomer(Customer customer);
+
+    abstract Customer saveCustomer(Customer customer);
+
+    public abstract List<BankAccount> bankAccountList();
 }
