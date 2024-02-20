@@ -12,42 +12,16 @@ import com.backend.ebanking.exceptions.CustomerNotFoundException;
 import java.util.List;
 
 public interface BankAccountService {
-
-    //Sauvegarder un Customer
-    Customer saveCustomer(Customer customer);
-
-
-    //Sauvegarder un compte
-    CurrentAccount saveCurrentBankAccount(double initialBalance, double Overdraft, Long customerId) throws CustomerNotFoundException;
-
-    SavingAccount saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFoundException;
-    // Quel est le solde initial, le type du compte, quel client
-
-
-    //consulter une liste de client,
+    CustomerDTO saveCustomer(CustomerDTO customerDTO);   //
+    CurrentBankAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws CustomerNotFoundException;
+    SavingBankAccountDTO saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFoundException;
     List<CustomerDTO> listCustomers();
-
-
-    //Pour consulter un compte j'aurais besoin de son id
-    BankAccount GetBankAccount(String accountId) throws BankAccountNotFoundException;
-
-
-    //operation de debit
-    void debit(String accountId, double amount, String description) throws BalanceNotSufficientException, BankAccountNotFoundException;
-
-
-    //operation de transfer d'argent
+    BankAccountDTO getBankAccount(String accountId) throws BankAccountNotFoundException;
+    void debit(String accountId, double amount, String description) throws BankAccountNotFoundException, BalanceNotSufficientException;
     void credit(String accountId, double amount, String description) throws BankAccountNotFoundException;
-
-
-    //operation de transfer d'argent
     void transfer(String accountIdSource, String accountIdDestination, double amount) throws BankAccountNotFoundException, BalanceNotSufficientException;
 
-    List<BankAccount> bankAccountList();
-
-
-    BankAccountDTO getBankAccount(String accountId) throws BankAccountNotFoundException;
-
+    List<BankAccountDTO> bankAccountList();
 
     CustomerDTO getCustomer(Long customerId) throws CustomerNotFoundException;
 
@@ -70,7 +44,6 @@ public interface BankAccountService {
 
 
 
-
     /*
     //Sauvegarder un Customer
     SaveCustomer(Long id, String name, String email)
@@ -84,4 +57,4 @@ public interface BankAccountService {
     */
 
 
-}
+

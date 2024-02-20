@@ -1,5 +1,6 @@
 package com.backend.ebanking.services;
 
+import com.backend.ebanking.dtos.CustomerDTO;
 import com.backend.ebanking.entities.BankAccount;
 import com.backend.ebanking.entities.CurrentAccount;
 import com.backend.ebanking.entities.Customer;
@@ -38,6 +39,8 @@ public abstract class BankService {
         }
     }
 
+
+    public abstract CustomerDTO saveCustomer(CustomerDTO customerDTO);
 
     abstract Customer saveCustomer(Customer customer);
 

@@ -22,7 +22,7 @@ public class BankAccountMapperImpl {
         return customerDTO;
     }
 
-    public Customer fromCustomerDTO(Customer customerDTO){
+    public Customer fromCustomerDTO(CustomerDTO customerDTO){
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
         //customer.setId(customerDTO.getId());
